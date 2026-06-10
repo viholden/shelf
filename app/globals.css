@@ -1,0 +1,109 @@
+@import "tailwindcss";
+
+/* ─── Design Tokens ───────────────────────────────────────────────── */
+:root {
+  --shelf-bg:          #0C0A09;
+  --shelf-surface:     #141210;
+  --shelf-card:        #1C1917;
+  --shelf-card-hover:  #231F1C;
+  --shelf-border:      #2C2723;
+  --shelf-border-subtle: #201D1A;
+
+  --shelf-gold:        #D49B4B;
+  --shelf-gold-hover:  #E5AF65;
+  --shelf-gold-dim:    #8A6330;
+  --shelf-gold-subtle: #2A2015;
+
+  --shelf-text:        #F0E8DC;
+  --shelf-text-muted:  #9C9086;
+  --shelf-text-faint:  #625A52;
+
+  --shelf-success:     #4E9B6E;
+  --shelf-warning:     #D4894B;
+  --shelf-error:       #C05A5A;
+
+  --shelf-radius:      10px;
+  --shelf-radius-sm:   6px;
+  --shelf-radius-lg:   16px;
+}
+
+@theme inline {
+  --color-background:    var(--shelf-bg);
+  --color-foreground:    var(--shelf-text);
+
+  /* Shelf palette exposed as Tailwind utilities */
+  --color-shelf-bg:           var(--shelf-bg);
+  --color-shelf-surface:      var(--shelf-surface);
+  --color-shelf-card:         var(--shelf-card);
+  --color-shelf-card-hover:   var(--shelf-card-hover);
+  --color-shelf-border:       var(--shelf-border);
+  --color-shelf-border-subtle:var(--shelf-border-subtle);
+  --color-shelf-gold:         var(--shelf-gold);
+  --color-shelf-gold-hover:   var(--shelf-gold-hover);
+  --color-shelf-gold-dim:     var(--shelf-gold-dim);
+  --color-shelf-gold-subtle:  var(--shelf-gold-subtle);
+  --color-shelf-text:         var(--shelf-text);
+  --color-shelf-muted:        var(--shelf-text-muted);
+  --color-shelf-faint:        var(--shelf-text-faint);
+  --color-shelf-success:      var(--shelf-success);
+  --color-shelf-warning:      var(--shelf-warning);
+  --color-shelf-error:        var(--shelf-error);
+
+  --radius-shelf:    var(--shelf-radius);
+  --radius-shelf-sm: var(--shelf-radius-sm);
+  --radius-shelf-lg: var(--shelf-radius-lg);
+}
+
+/* ─── Base ────────────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; }
+
+html { -webkit-font-smoothing: antialiased; }
+
+body {
+  background: var(--shelf-bg);
+  color: var(--shelf-text);
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  min-height: 100dvh;
+}
+
+/* ─── Scrollbars ─────────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--shelf-border); border-radius: 99px; }
+::-webkit-scrollbar-thumb:hover { background: var(--shelf-text-faint); }
+
+/* ─── Selection ──────────────────────────────────────────────────── */
+::selection { background: var(--shelf-gold-dim); color: var(--shelf-text); }
+
+/* ─── Focus rings ─────────────────────────────────────────────────── */
+:focus-visible {
+  outline: 2px solid var(--shelf-gold);
+  outline-offset: 2px;
+  border-radius: var(--shelf-radius-sm);
+}
+
+/* ─── Animations ─────────────────────────────────────────────────── */
+@keyframes fade-in {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes spin-slow {
+  to { transform: rotate(360deg); }
+}
+.animate-fade-in  { animation: fade-in 0.25s ease forwards; }
+.animate-spin-slow { animation: spin-slow 1.2s linear infinite; }
+
+/* ─── Prose (chapter editor) ─────────────────────────────────────── */
+.prose-shelf {
+  color: var(--shelf-text);
+  line-height: 1.8;
+  font-size: 1rem;
+}
+.prose-shelf h1, .prose-shelf h2, .prose-shelf h3 {
+  color: var(--shelf-gold);
+  margin: 1.5em 0 0.5em;
+  font-weight: 600;
+}
+.prose-shelf p { margin: 0 0 1em; }
+.prose-shelf a { color: var(--shelf-gold); text-decoration: underline; }
+
